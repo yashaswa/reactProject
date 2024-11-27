@@ -1,0 +1,30 @@
+{
+  "name": "learnreact",
+  "version": "1.0.0",
+  "description": "learing react",
+
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/yashaswa/reactProject.git)"
+  },
+  "author": "yashaswa",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.13.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  
+    "browserslist":[
+      "last 2 versions"
+    ]
+  
+}
