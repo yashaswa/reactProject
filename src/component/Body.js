@@ -1,17 +1,19 @@
-import Restaurantcard from "./Resturantcard";
+import Restaurantcard ,{WithPromotedLable}from "./Resturantcard";
 import { useState ,useEffect} from "react";
 import Shimmer from "./shimmer";
 import resList from "../../utils/Mock_data";
 import {Link} from "react-router-dom";
-import useOnlineStatus from "../../utils/useOnlinStatus.js";
+import useOnlineStatus from "../../utils/useOnlineStatus.js";
+
 
 
 let fixed  = [];
 const Body = ()=>{
-  
+
   const [ListOfResturant,setListOfResturant ]= useState([]);
   const [searchText,setsearchText] = useState("");
 
+    const PromotedCard = WithPromotedLable(Restaurantcard);
   useEffect(()=>{
     fetchData();
   //  console.log("use effect called");
@@ -38,16 +40,16 @@ const Body = ()=>{
     return ListOfResturant.length==0 ? <Shimmer /> : (
         
             <div className="body">
-                <div className="filter">
+                <div className="filter flex ">
                   
-                <div className="search">
+                <div className="search m-3 p-3">
                  
                   <input 
-                  className="search-box" 
+                  className="search-box border border-spacing-1 border-black m-4 hover:scale-105" 
                   value = {searchText}
                   onChange={(e)=>{ setsearchText(e.target.value)}}></input>
 
-                  <button onClick={()=>{
+                  <button  className= " px-4 rounded-md bg-green-200 hover:scale-110 hover:bg-green-300 p-0.5"onClick={()=>{
                      
                    const filteredlist = fixed.filter((restaurants)=>{
                      return restaurants.info.name.toLowerCase().includes(searchText.toLowerCase());
@@ -56,8 +58,8 @@ const Body = ()=>{
                     
                   }}>Search</button>
                 </div>
-
-                  <button className="filter-btn" onClick={
+                  <div className="flex items-center">
+                  <button className="px-4 py-0.5 m-9 rounded-sm bg-green-200 hover:scale-110 hover:bg-green-300 " onClick={
                     ()=>{
                      const filteredlist = ListOfResturant.filter(
                       
@@ -67,12 +69,17 @@ const Body = ()=>{
                       setListOfResturant(filteredlist);
                     }
                   }>Top Rated Restaurants</button>
-
+</div>
                   </div>
-                    <div className="res-container">
+                    <div className="res-container flex bg-neutral-50 flex-wrap rounded-lg">
                 {
                  ListOfResturant.map((resturant) =>( 
-                   <Link key = {resturant.info.id} to={"/restaurant/"+resturant.info.id}><Restaurantcard  resdata = {resturant}/></Link>))// this is how you pass value to props 
+                   <Link key = {resturant.info.id} to={"/restaurant/"+resturant.info.id}>
+                  {resturant.info.promoted ? (< PromotedCard resdata = {resturant}/>):(<Restaurantcard  resdata = {resturant}/>)}
+                  
+                    
+                    </Link>
+                    ))// this is how you pass value to props 
                    //similar to how we pass argument to function resdata is argument and we are passing it to Restaurantcard function
                    // easy way me tune Resturantcard function ko call kiya hai resdata argument ke sath or key(unique id ) nhi pass ki hai
                 }   

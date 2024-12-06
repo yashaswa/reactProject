@@ -1950,6 +1950,7 @@ resList = [
                       "avgRating": 4.6,
                       "veg": true,
                       "parentId": "5588",
+                      "promoted": true,
                       "avgRatingString": "4.6",
                       "totalRatingsString": "20",
                       "sla": {
@@ -2070,6 +2071,7 @@ resList = [
                       ],
                       "avgRating": 4.4,
                       "parentId": "166",
+                      "promoted": false,
                       "avgRatingString": "4.4",
                       "totalRatingsString": "7.6K+",
                       "sla": {
@@ -2190,6 +2192,7 @@ resList = [
                       ],
                       "avgRating": 4.3,
                       "parentId": "547",
+                      "promoted": true,
                       "avgRatingString": "4.3",
                       "totalRatingsString": "5.2K+",
                       "sla": {
@@ -2298,6 +2301,7 @@ resList = [
                       "avgRating": 4.7,
                       "veg": true,
                       "parentId": "726",
+                      "promoted": false,
                       "avgRatingString": "4.7",
                       "totalRatingsString": "116",
                       "sla": {
@@ -2414,6 +2418,7 @@ resList = [
                       ],
                       "avgRating": 4.4,
                       "parentId": "103",
+                      "promoted": false,
                       "avgRatingString": "4.4",
                       "totalRatingsString": "647",
                       "sla": {
@@ -2536,6 +2541,7 @@ resList = [
                       "avgRating": 4.5,
                       "veg": true,
                       "parentId": "22",
+                      "promoted": true,
                       "avgRatingString": "4.5",
                       "totalRatingsString": "5.7K+",
                       "sla": {
@@ -2644,6 +2650,7 @@ resList = [
                       ],
                       "avgRating": 4.3,
                       "parentId": "73127",
+                      "promoted": false,
                       "avgRatingString": "4.3",
                       "totalRatingsString": "6.9K+",
                       "sla": {
@@ -2754,6 +2761,7 @@ resList = [
                       "avgRating": 4.2,
                       "veg": true,
                       "parentId": "1727",
+                      "promoted": false,
                       "avgRatingString": "4.2",
                       "totalRatingsString": "25",
                       "sla": {

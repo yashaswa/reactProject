@@ -2,10 +2,12 @@ import { useState,useEffect } from "react";
 import Shimmer from "./shimmer";
 import { useParams } from "react-router";
 import { MENU_URL } from "../../utils/constant";
-import useRestauranMenu from "../../utils/useRestaurantMenu";
+import useRestauranMenu from "../../utils/useRestauranMenu";
+import RestaurantCategory from "./RestaurantCategory";
+
 
 const RestaurantMenu = ()=> {
-    
+const [showIndex ,setshowIndex] = useState(-1)
 const {resId} = useParams();
 //console.log(resId);
 
@@ -27,22 +29,25 @@ const {resId} = useParams();
     // }
    const resinfo =  useRestauranMenu(resId);
     if(resinfo===null ) return <Shimmer/>
-   console.log(resinfo);
+  // console.log(resinfo);
     const {name,cuisines,cloudinaryImageId,costForTwoMessage} = resinfo?.cards[2]?.card?.card?.info;
-    const  MenuCard  = resinfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards
-    ||resinfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards 
-    ||resinfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card?.itemCards //.itemCards[0].card.info.name;
+    const MenuCard = resinfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((e)=>e?.card?.card?.["@type"]=="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
    // console.log(MenuCard);
-
+    
     return  (
-        <div className="menu">
-            <h1> {name}</h1>
-            <h2>{costForTwoMessage}</h2>
-            <ul>
-                  <li>{cuisines?.join(" ,")}</li> <br></br>
-                {MenuCard.map(e=><li key= {e.card.info.id}>{e.card.info.name}   -   { e.card.info.price/100||e.card.info.defaultPrice/100 }  Rs</li>)}
-                
-            </ul>
+        <div className="menu text-center ">
+            <h1 className="font-bold m-5 text-3xl"> {name}</h1>
+            <p className=" font-semibold text-xl">{cuisines.join(" ,")}</p>
+
+            {MenuCard.map((category,index)=>(
+                <RestaurantCategory
+                 key ={category?.card?.card?.title}
+                 data = {category?.card?.card}
+                 showItems = {index===showIndex?true:false}
+                 setshowIndex = {()=> setshowIndex(index)}/>
+                 
+            ))}
+           
             
            
          

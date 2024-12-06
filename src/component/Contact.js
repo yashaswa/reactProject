@@ -1,4 +1,4 @@
-console.log("inside contact");
+//console.log("inside contact");
 const Contact=()=>(
     <div>
         <h1>Contact Us</h1>
